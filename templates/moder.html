@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Moderator</title>
+	<style>
+		ul {
+			margin-bottom: 200px;
+		}
+		body * {
+			font-family: 'Open Sans', sans-serif;
+		}
+		a {
+			text-decoration: none;
+		}
+		section {
+			position: absolute;
+			left: 20%;
+			right: 20%;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<h1>Welcome Moderator</h1>
+		<a href="/admin">К статистике команд</a>
+		<br><br><br>
+		<h2>Добавить станцию</h2>
+		<p>Ведущие станции - родительские станции, которые необходимо пройти для открытия этой, перечислить через запятую. Например для "снабжение города" - "паровая турбина, конвеер"</p>
+		<p>Сфера - нужно вписать одну букву: <strong>n</strong> - наука, <strong>p</strong> - промышленность, <strong>c</strong> - культура, <strong>s</strong> - социум</p>
+		<form action="mod_stat">
+			<input type="text" name="name" placeholder="Название">
+			<input type="text" name="type" placeholder="Сфера"><br>
+			<input type="text" name="parents" placeholder="Ведущие станции">
+			<input type="submit">
+		</form>
+		<br>
+		<br>
+		<br>
+		<h2>Добавить ключ</h2>
+		<form action="mod_key">
+			<input type="text" name="station" placeholder="Станция">
+			<input type="text" name="key" placeholder="Ключ"><br>
+			<br><label for="">Очки за прохождение:</label><br>
+			<input type="text" name="n" placeholder="Наука">
+			<input type="text" name="p" placeholder="Пром">
+			<input type="text" name="c" placeholder="Культ">
+			<input type="text" name="s" placeholder="Социо">
+			<input type="text" name="m" placeholder="Деньги">
+			<input type="submit">
+		</form>
+		<br>
+		<br>
+		<br>
+		<h2>Кликните чтобы удалить станцию</h2>
+		<ul>
+			{% for n in stations %}
+				<li>
+					<a href="mod_del?stat={{n}}">{{n}}</a>
+					<br>
+					Ключи: {{stations[n]['keys']}}
+					<br>
+					Родители: {% for p in stations[n]['parents'] %} {{p}}, {% endfor %}
+					<br>
+					Сфера: {{stations[n]['type']}}
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
+</body>
+</html>

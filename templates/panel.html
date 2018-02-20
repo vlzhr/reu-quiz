@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Панель команды</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+	<style>
+		body {
+			margin: 0px;
+		}
+		body * {
+			font-family: 'Open Sans', sans-serif;
+		}
+		a {
+			text-decoration: none;
+		}
+		section, footer {
+			margin: 0px;
+			width: 100%;
+			clear: both;
+			float: left;
+			position: relative;
+			padding: 1px 97px;
+			box-sizing: border-box;
+		}
+		.head {
+			background: #01c09f;
+			color: white;
+			font-size: 25px;
+			padding-bottom: 60px;
+			padding-top: 60px;
+		}
+		.head p * {
+			font-size: 25px;
+			font-weight: 300;
+		}
+		.head h1 {
+			font-weight: 400;
+			margin-top: 0px;
+		}
+		.head p {
+			font-weight: 300;
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+		h1 {
+			margin-bottom: 40px;
+			font-size: 40px;
+		}
+		ul {
+			padding-left: 0px;
+			box-sizing: border-box;
+			width: 50%;
+			float: left;
+		}
+		li {
+			list-style: none;
+			margin: 5px 0px;
+		}
+		span {
+			display: inline;
+			box-sizing: border-box;
+			max-width: 30%;
+			margin-right: 40px;
+			float: left;
+		}
+		form {
+			float: left;
+		}
+		input {
+			margin-right: 10px;
+		}
+		.ab {
+			padding-top: 50px;
+			padding-bottom: 80px;
+			box-sizing: border-box;
+			font-size: 20px;
+			color: #545454;
+			border-bottom: 3px solid black;
+		}
+		.ab strong {
+			font-weight: 400;
+			display: block;
+			margin-bottom: 10px;
+		}
+		article {
+			width: 100%;
+			clear: both;
+		}
+		.p strong {
+			color: #00b4ee;
+		}
+		input {
+			border: 1px solid #676767;
+			padding: 6px 10px;
+		}
+		input[type="submit"] {
+			color: white;
+			border-width: 0px;
+		}
+		.p input[type="submit"] {
+			background: #00b4ee;
+		}
+		.n strong {
+			color: #fbac4e;
+		}
+		.n input[type="submit"] {
+			background: #fbac4e;
+		}
+		.c strong {
+			color: #01c09f;
+		}
+		.c input[type="submit"] {
+			background: #01c09f;
+		}
+		.s strong {
+			color: #fa5d93;
+		}
+		.s input[type="submit"] {
+			background: #fa5d93;
+		}
+		div.border {
+			border-bottom: solid 3px #676767;
+		}
+
+		.do {
+			padding-top: 50px;
+			padding-bottom: 80px;
+			color: #545454;
+			font-size: 20px;
+			font-weight: 400;
+			box-sizing: border-box;
+		}
+		.do strong, .do div {
+			font-weight: 400;
+		}
+		.do div {
+			font-size: 12px;
+			color: #01c09f;
+		}
+		.do ul {
+			margin: 30px 0px;
+			width: 100%;
+		}
+		article {
+			width: 100%;
+		}
+
+		footer {
+			border-top: 3px solid #676767;
+			padding-top: 40px;
+			padding-bottom: 80px;
+			width: 100%;
+			float: left;
+			clear: both;
+			font-weight: 400;
+			color: #01c09f;
+			font-size: 20px;
+		}
+		.uv {
+			display: none;
+		}
+		.red::-webkit-input-placeholder {
+    		color: red;
+		}
+		@media only screen and (max-device-width: 480px) {
+			section {
+				padding: 1px 30px;
+			}
+			footer {
+				padding: 50px 30px;
+			}
+			span {
+				max-width: 30%;
+				margin-right: 5%;
+			}
+			form {
+				max-width: 65%;
+			}
+			body *, input, strong {
+				-webkit-appearance: none;
+				font-size: 35px;
+			}
+			input {
+				font-size: 25px;
+			}
+			input[type="text"] {
+				float: left;
+				max-width: 50%;
+			}
+			input[type="submit"] {
+				float: right;
+				max-width: 40%;
+			}
+			h1 {
+				font-size: 55px;
+			}
+			ul {
+				width: 100%;
+				clear: both;
+			}
+			#content li {
+				margin-bottom: 30px;
+			}
+			#content div {
+				font-size: 22px;
+			}
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	
+	<script>
+		window.onload = function() {
+			alert = "{{alert}}"
+			li = $("form")
+			for (num in li) {
+				n = li[num]
+				stat = $(n).children(".uv").attr('value')
+				if (alert == stat) {
+					inp = $(n).children(".keyhold")
+					$(inp).attr("placeholder", "Код неправильный")
+					$(inp).addClass("red")
+					return 1
+				}
+				else if (n == li.length) {
+					return 1
+				}
+			}
+		}
+
+		function add_input (n, station, cl) {
+			return ''
+			$("#sp"+n).attr('onclick', 'del_input('+n+', \"'+ station + '\", "' + cl + '")')
+			$("#li"+n).html($("#li"+n).html() + '<br><form action="add_station"><input class="uv" name="station" value="' + station + '"><input name="key" placeholder="Ключ"><input type="submit" class="uv"></form>'
+			)
+		}
+		function del_input(n, station, cl) {
+			$("#li"+n).html('<span id="sp' + n + '">'+ station + '</span>')
+			$("#sp"+n).attr('onclick', 'add_input(' + n + ', "' + station + '", "' + cl + '")')
+			$("#sp"+n).attr('class', cl)
+		}
+		function show_more() {
+			$("#content").html("<strong>ПРОЙДЕННЫЕ</strong><ul>{% for n in team['stations'] %}				<li>{{n['name']}} ({{n['res']['p']}} промышленность, {{n['res']['n']}} наука, {{n['res']['c']}} культура, {{n['res']['s']}} социальная, {{n['res']['m']}} денежных единиц)</li>	{% endfor %}</ul>")
+		}
+	</script>
+</head>
+<body>
+	<section class="head">
+		<h1>Команда {{name}}</h1>
+		<p>
+			<strong>{{team['res']['p']}}</strong>&nbsp;промышленность   |   <strong>{{team['res']['n']}}</strong>&nbsp;наука   |   <strong>{{team['res']['c']}}</strong>&nbsp;культура   |   <strong>{{team['res']['s']}}</strong>&nbsp;социальная   |   <strong>{{team['res']['m']}}</strong>&nbsp;денежных единиц
+		</p>
+	</section>
+	<section class="ab">
+		<article>
+		<ul class="p">
+			<strong>ПРОМЫШЛЕННОСТЬ</strong>
+			{% for n, station in enumerate(able['p']) %}
+				<li id="li{{n}}"><span class="p" id="sp{{n}}" onclick="add_input({{n}}, '{{station}}', 'p')">{{station.capitalize()}}</span> <form action="add_station"><input class="uv" name="station" value="{{station}}"><input name="key" placeholder="Введите код" class="keyhold"><input type="submit" value="Ввод"></form></li>
+			{% endfor %}
+		</ul>
+		<ul class="c">
+			<strong>КУЛЬТУРА</strong>
+			{% for n, station in enumerate(able['c']) %}
+				<li id="li{{n}}"><span class="c" id="sp{{n}}" onclick="add_input({{n}}, '{{station}}', 'c')">{{station.capitalize()}}</span> <form action="add_station"><input class="uv" name="station" value="{{station}}"><input name="key" placeholder="Введите код" class="keyhold"><input type="submit" value="Ввод"></form></li>
+			{% endfor %}
+		</ul>
+		</article>
+		<article>
+		<ul class="n">
+			<strong>НАУКА</strong>
+			{% for n, station in enumerate(able['n']) %}
+				<li id="li{{n}}"><span class="n" id="sp{{n}}" onclick="add_input({{n}}, '{{station}}', 'n')">{{station.capitalize()}}</span> <form action="add_station"><input class="uv" name="station" value="{{station}}"><input name="key" placeholder="Введите код" class="keyhold"><input type="submit" value="Ввод"></form></li>
+			{% endfor %}
+		</ul>
+		<ul class="s">
+			<strong>СОЦИАЛЬНАЯ</strong>
+			{% for n, station in enumerate(able['s']) %}
+				<li id="li{{n}}"><span class="s" id="sp{{n}}" onclick="add_input({{n}}, '{{station}}', 's')">{{station.capitalize()}}</span> <form action="add_station"><input class="uv" name="station" value="{{station}}"><input name="key" placeholder="Введите код" class="keyhold"><input type="submit" value="Ввод"></form></li>
+			{% endfor %}
+		</ul>
+		</article>
+	</section>
+	<section class="do">
+		<article id="content">
+			{% if len(team['stations']) > 1 %}
+			<strong>ПРОЙДЕННЫЕ</strong>
+			<ul>
+				<li>{{team['stations'][0]['name']}} ({{team['stations'][0]['res']['p']}} промышленность, {{team['stations'][0]['res']['n']}} наука, {{team['stations'][0]['res']['c']}} культура, {{team['stations'][0]['res']['s']}} социальная, {{team['stations'][0]['res']['m']}} денежных единиц)</li>
+			</ul>
+			<br><br>
+			<div onclick="show_more()">ОСТАЛЬНЫЕ ...</div>
+			{% elif len(team['stations']) > 0 %}
+			<strong>ПРОЙДЕННЫЕ</strong>
+			<ul>
+				<li>{{team['stations'][0]['name']}} ({{team['stations'][0]['res']['p']}} промышленность, {{team['stations'][0]['res']['n']}} наука, {{team['stations'][0]['res']['c']}} культура, {{team['stations'][0]['res']['s']}} социальная, {{team['stations'][0]['res']['m']}} денежных единиц)</li>
+			</ul>			
+			{% else %}
+			Пока нет пройденных ...
+			{% endif %}			
+
+		</article>
+	</section>
+	<footer>
+		<a href="/logout">Выйти</a><br>
+		РАЗРАБОТАНО БИЗНЕС В СТИЛЕ.RU
+	</footer>
+</body>
+</html>

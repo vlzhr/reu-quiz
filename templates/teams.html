@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Рейтинг команд</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+	<style>
+		body * {
+			font-family: 'Open Sans', sans-serif;
+		}
+		a {
+			text-decoration: none;
+		}
+		section {
+			position: absolute;
+			left: 20%;
+			right: 20%;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<h1>Статистика команд</h1>
+		<a href="/moder">К модерированию станций</a><br>
+		<a href="/panel">К тестовой команде</a><br>
+		<a href="/restart_game">Удалить пройденные станции для всех команд</a><br>
+		<br>
+		<br>
+		{% for team in teams %}
+			<article>
+				<h3>{{team['login']}}</h3>
+				<p>Наука:&nbsp;<strong>{{team['res']['n']}}</strong>, Промышленность:&nbsp;<strong>{{team['res']['p']}}</strong>, Культура:&nbsp;<strong>{{team['res']['c']}}</strong>, Социо:&nbsp;<strong>{{team['res']['s']}}</strong>, Деньги:<strong>{{team['res']['m']}}</strong></p>
+			</article>
+			<br><br>
+		{% endfor %}
+	</section>
+</body>
+</html>

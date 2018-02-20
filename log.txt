@@ -1,0 +1,4 @@
+/home/i/ivova/packages/lib/python2.7/site-packages/werkzeug/filesystem.py:63: BrokenFilesystemWarning: Detected a misconfigured UNIX filesystem: Will use UTF-8 as filesystem encoding instead of 'ANSI_X3.4-1968'
+  BrokenFilesystemWarning)
+/home/i/ivova/packages/lib/python2.7/site-packages/werkzeug/filesystem.py:63: BrokenFilesystemWarning: Detected a misconfigured UNIX filesystem: Will use UTF-8 as filesystem encoding instead of 'ANSI_X3.4-1968'
+  BrokenFilesystemWarning)

@@ -1,0 +1,10 @@
+stations = {"name1": {"parents": [], "keys": {"123": {"": 1}}, "type": ""}, "name2"}
+
+teams = [{"login", "password", "stations", "res": {}}]
+
+
+
+n = наука
+p = промышленность
+c = культура
+s = социалка
